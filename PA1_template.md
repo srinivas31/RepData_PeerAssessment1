@@ -1,7 +1,4 @@
----
-title: "Activity Monitoring Device Analysis"
-output: html_document
----
+# Actitivity Monitoring Device Analysis
 
 
 
@@ -42,7 +39,7 @@ colors = c("red", "yellow", "green", "violet", "orange", "blue", "pink", "cyan")
 Hist1 = hist(Histprep$TotalSteps,  col=colors,  main="Total Number of Steps Taken Each Day",  xlab="Total Steps") 
 ```
 
-![plot of chunk Stepscalc](figure/Stepscalc-1.png)
+![](PA1_template_files/figure-html/Stepscalc-1.png)<!-- -->
 
 ```r
 mean(Histprep$TotalSteps)
@@ -76,10 +73,10 @@ Create line chart showing average number of steps
 
 ```r
 Plotprep <- ddply(Activity2, .(interval), summarize, AvgSteps = mean(steps))
-plot(Plotprep$interval, Plotprep$AvgSteps, type="l", col="red", xlab="5 Minute Interval", ylab="Average Num of Steps")
+plot(Plotprep$interval, Plotprep$AvgSteps, type="l", col="red", xlab="5 Minute Interval", ylab="Average Num of Steps", main = "Avg Num of Steps over 5 Minute Interval")
 ```
 
-![plot of chunk Plotprep](figure/Plotprep-1.png)
+![](PA1_template_files/figure-html/Plotprep-1.png)<!-- -->
 
 ```r
 Plotprep[(Plotprep$AvgSteps==max(Plotprep$AvgSteps)),]
@@ -124,7 +121,7 @@ colors = c("red", "yellow", "green", "violet", "orange", "blue", "pink", "cyan")
 Hist2 = hist(Histprep2$TotalSteps,  col=colors,  main="Total Num of Steps Taken Each Day after Impute",  xlab="Total Steps") 
 ```
 
-![plot of chunk ImputeHist](figure/ImputeHist-1.png)
+![](PA1_template_files/figure-html/ImputeHist-1.png)<!-- -->
 
 ```r
 mean(Histprep2$TotalSteps)
@@ -178,18 +175,9 @@ Create another plot showing average number of steps taken by weekday and weekend
 ```r
 library(lattice)
 attach(Plotprep2)
-```
-
-```
-## The following objects are masked from Plotprep2 (pos = 3):
-## 
-##     AvgSteps, interval, weekend, WeekendFlag
-```
-
-```r
 xyplot(AvgSteps ~ interval|WeekendFlag, data = Plotprep2,
         type = "l", main="Avg Number of Steps Taken by Weekday and Weekend",
        xlab="Interval", ylab="Number of Steps", layout=c(1,2))
 ```
 
-![plot of chunk Plotprep2](figure/Plotprep2-1.png)
+![](PA1_template_files/figure-html/Plotprep2-1.png)<!-- -->

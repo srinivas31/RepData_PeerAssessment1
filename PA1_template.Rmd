@@ -1,6 +1,8 @@
 ---
-title: "Activity Monitoring Device Analysis"
-output: html_document
+title: "Actitivity Monitoring Device Analysis"
+output:
+  html_document:
+    keep_md: true
 ---
 
 ```{r setup, include=FALSE}
@@ -42,7 +44,7 @@ Create line chart showing average number of steps
 
 ```{r Plotprep, echo=TRUE}
 Plotprep <- ddply(Activity2, .(interval), summarize, AvgSteps = mean(steps))
-plot(Plotprep$interval, Plotprep$AvgSteps, type="l", col="red", xlab="5 Minute Interval", ylab="Average Num of Steps")
+plot(Plotprep$interval, Plotprep$AvgSteps, type="l", col="red", xlab="5 Minute Interval", ylab="Average Num of Steps", main = "Avg Num of Steps over 5 Minute Interval")
 Plotprep[(Plotprep$AvgSteps==max(Plotprep$AvgSteps)),]
 ```
 
